@@ -12,8 +12,6 @@ namespace KoloryMaui.ModelWidoku
 {
     public class KolorMW : ObservedObject
     {
-
-
         public  Model.Kolor model = Model.Ustawienia.Czytaj();
 
         #region Właściwości
