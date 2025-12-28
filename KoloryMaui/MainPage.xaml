@@ -12,19 +12,33 @@
 
             <ContentPage.Resources>
               <local:DoubleToByteString x:Key="d2bs"/>
-           </ContentPage.Resources>
+              <local:RGBToBrushConverter x:Key="rgb2brush"/>
+            </ContentPage.Resources>
     
 
             <Grid RowSpacing="25"  Padding="30" RowDefinitions="*,Auto,Auto,Auto"
               ColumnSpacing="25" ColumnDefinitions="*,Auto">
 
-        <Rectangle x:Name="rectangle" Grid.Row="0" Fill="{Binding SolidColeur, Mode=OneWay}" Grid.ColumnSpan="2" />
-            <Slider x:Name="sliderR" Grid.Row="1"  Value="{Binding R, Mode=TwoWay}"/>
-        <Label x:Name="labelR" WidthRequest="65" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="{Binding R, Mode=OneWay, Converter = {StaticResource d2bs}}" TextColor="Red" FontSize="35"  />
-            <Slider x:Name="sliderG" Grid.Row="2"  Value="{Binding G, Mode=TwoWay}"/>
-        <Label x:Name="labelG" WidthRequest="65" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="{Binding G, Mode=OneWay, Converter = {StaticResource d2bs}}" TextColor="Green" FontSize="35" />
-            <Slider x:Name="sliderB" Grid.Row="3" Value="{Binding B, Mode=TwoWay}"/>
-        <Label x:Name="labelB" WidthRequest="65" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="{Binding B, Mode=OneWay, Converter = {StaticResource d2bs}}" TextColor="Blue" FontSize="35"/>
+                <Rectangle x:Name="rectangle" Grid.Row="0"  Grid.ColumnSpan="2" >
+                    <Rectangle.Fill>
+                        <MultiBinding Mode="OneWay" Converter="{StaticResource rgb2brush}">
+                            <Binding Path="R"/>
+                            <Binding Path="G"/>
+                            <Binding Path="B"/>
+
+                         </MultiBinding>
+                    </Rectangle.Fill>
+                </Rectangle>
+
+
+
+
+        <Slider x:Name="sliderR" Grid.Row="1"  Value="{Binding R, Mode=TwoWay}"/>
+                <Label x:Name="labelR" WidthRequest="65" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="{Binding R, Mode=OneWay, Converter = {StaticResource d2bs}}" TextColor="Red" FontSize="35"  />
+                    <Slider x:Name="sliderG" Grid.Row="2"  Value="{Binding G, Mode=TwoWay}"/>
+                <Label x:Name="labelG" WidthRequest="65" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="{Binding G, Mode=OneWay, Converter = {StaticResource d2bs}}" TextColor="Green" FontSize="35" />
+                    <Slider x:Name="sliderB" Grid.Row="3" Value="{Binding B, Mode=TwoWay}"/>
+                <Label x:Name="labelB" WidthRequest="65" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="{Binding B, Mode=OneWay, Converter = {StaticResource d2bs}}" TextColor="Blue" FontSize="35"/>
         
         </Grid>
   
