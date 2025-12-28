@@ -15,7 +15,6 @@ namespace KoloryMaui.ModelWidoku
 
 
         public  Model.Kolor model = Model.Ustawienia.Czytaj();
-        
 
         #region Właściwości
         public double R
