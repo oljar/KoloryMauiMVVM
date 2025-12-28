@@ -42,7 +42,8 @@ namespace KoloryMaui.Model
             this.B = b;
         }
 
-    
+        // zmienia kolor rectangle na podstawie wartości RGB
+
         public Color Coleur
         {
             get
