@@ -61,6 +61,7 @@ namespace KoloryMaui.ModelWidoku
             }
         }
 
+        // zmienia kolor rectangle na podstawie wartości RGB
 
         public SolidColorBrush SolidColeur
 {
