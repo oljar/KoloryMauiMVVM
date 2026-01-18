@@ -12,13 +12,6 @@ public partial class MainPage : ContentPage
 
     }
 
-            private void ContentPage_Disappearing(object sender, EventArgs e)
-    {
-      
-
-        Model.Kolor kolor = new Model.Kolor(sliderR.Value, sliderG.Value, sliderB.Value);
-        Model.Ustawienia.Zapisz(kolor);
-    }
 }
 
 

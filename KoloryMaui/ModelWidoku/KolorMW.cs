@@ -1,29 +1,22 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Maui.Graphics;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+using System.Windows.Input;
 
 
 
 namespace KoloryMaui.ModelWidoku;
 
 
- partial class KolorMW : ObservableObject
+partial class KolorMW : ObservableObject
 {
-    public  Model.Kolor model = Model.Ustawienia.Czytaj();
+    public Model.Kolor model = Model.Ustawienia.Czytaj();
 
     #region Właściwości
 
-    
+
     public double R
-    {   
+    {
         get => model.R;
         set
         {
@@ -48,12 +41,12 @@ namespace KoloryMaui.ModelWidoku;
             }
         }
     }
-     
+
     public double B
 
 
     {
-     
+
 
         get => model.B;
         set
@@ -71,7 +64,7 @@ namespace KoloryMaui.ModelWidoku;
     // zmienia kolor rectangle na podstawie wartości RGB
 
     public SolidColorBrush SolidColeur
-{
+    {
         get
         {
             return new SolidColorBrush(model.Coleur);
@@ -79,8 +72,8 @@ namespace KoloryMaui.ModelWidoku;
         set
         {
             PodajNaKoncole();
-            
-           
+
+
             {
                 model.Coleur = value.Color;
             }
@@ -88,46 +81,69 @@ namespace KoloryMaui.ModelWidoku;
             PodajNaKoncole();
         }
     }
-    
+
     public void PodajNaKoncole()
-            {
-                Debug.WriteLine($"R: {R}, G: {G}, B: {B}, Coleur: {model.Coleur}");
-            }
+    {
+        Debug.WriteLine($"R: {R}, G: {G}, B: {B}, Coleur: {model.Coleur}");
+    }
     #endregion
 
 
 
 
-private readonly IRelayCommand _drukCommand;
+    private readonly IRelayCommand _drukCommand;
+    private readonly IRelayCommand _zapiszCommand;
 
-public IRelayCommand DrukCommand
-{
-    get => _drukCommand;
-}
+    public IRelayCommand DrukCommand
+    {
+        get => _drukCommand;
+    }
 
-public KolorMW()
-{
-    this._drukCommand = new RelayCommand(Druk,CanDruk);
-}
+    public IRelayCommand ZapiszCommand
+    {
+        get => _zapiszCommand;
+    }
+
+
+
+
+
+    public KolorMW()
+    {
+        this._drukCommand = new RelayCommand(Druk, CanDruk);
+
+        this._zapiszCommand = new RelayCommand(Zapisz, CanZapisz);
+    }
 
 
     private void Druk()
     {
-            Debug.WriteLine("Naciśnięto przycisk Druk");
-       
-            this.R = 0;
-            this.G = 255;
-            this.B = 0;
+        Debug.WriteLine("Naciśnięto przycisk Druk");
+
+        this.R = 0;
+        this.G = 255;
+        this.B = 0;
     }
 
 
     private bool CanDruk()
     {
-        
-            return true;
-        
+
+        return true;
+
     }
 
- }
+
+    public void Zapisz()
+
+    {
+        Debug.WriteLine("Naciśnięto przycisk Zapisz");
+        Model.Ustawienia.Zapisz(model);
+    }
+    public bool CanZapisz()
+    {
+        return true;
+    }
+}
 
     
