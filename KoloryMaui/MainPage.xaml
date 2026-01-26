@@ -45,9 +45,18 @@
                 <Button x:Name="buttonRandom" Grid.Row="4" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Start" Text="Losuj" Command="{Binding DrukCommand}"/>
 
 
+        <Button Grid.Row="3" Grid.Column="2" Text="commandToEventBehavior">
+            <Button.Behaviors>
+                <t:EventToCommandBehavior
+            EventName="Clicked"
+            Command="{Binding KlikCommand}" />
+            </Button.Behaviors>
+        </Button>
 
 
-            </Grid>
+
+
+    </Grid>
   
 
 

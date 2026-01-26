@@ -144,6 +144,13 @@ partial class KolorMW : ObservableObject
     {
         return true;
     }
+
+
+    public ICommand KlikCommand => new Command( () =>
+    {
+        Debug.WriteLine("Kliknięto element interfejsu użytkownika");
+    });
+
 }
 
-    
+
